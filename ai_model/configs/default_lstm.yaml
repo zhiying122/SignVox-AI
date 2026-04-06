@@ -1,0 +1,33 @@
+experiment:
+  name: "bilstm_baseline"
+  seed: 42
+
+model:
+  architecture: "lstm"
+  input_dim: 675
+  hidden_dim: 256
+  num_layers: 2
+  num_classes: 100
+  dropout: 0.3
+
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 1.0e-3
+  weight_decay: 1.0e-4
+  early_stopping_patience: 10
+  lr_scheduler: "cosine_annealing"
+  balance_strategy: "weighted_loss"
+
+data:
+  feature_dir: "data/features/"
+  annotation_csv: "data/annotations.csv"
+  max_seq_len: 150
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+
+paths:
+  checkpoint_dir: "ai_model/experiments/checkpoints/"
+  log_dir: "ai_model/experiments/logs/"
+  registry: "ai_model/experiments/model_registry.json"
